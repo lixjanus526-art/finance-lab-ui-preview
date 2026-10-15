@@ -1,0 +1,152 @@
+{
+  "sourceRepository": "Fintechathon-agent/Fintechathon-agent",
+  "sourceBranch": "codex/ui-site-integration-v1",
+  "sourceCommit": "9314e42a60cfe07219b343088331f5750cc685e0",
+  "reviewedMain": "0e0fa1944bce2cd122ad0611644f9346214230a9",
+  "mode": "PREVIEW_STATIC_UI_ONLY",
+  "backend": "NOT_CONNECTED",
+  "files": [
+    {
+      "file": ".nojekyll",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "build-info.json",
+      "sha256": "569988676928615a81a0a5c0adc497b25a85e823f03cbb2f0af5e6f05cad650c"
+    },
+    {
+      "file": "catalog.html",
+      "sha256": "9a32c153634845114853d4d4cadb62f7aafac48a5d631bf2585d82d97a1fd586"
+    },
+    {
+      "file": "index.html",
+      "sha256": "2e417fc4a5b1dd5abf65945adc8b1e15b476328a4a7f1c00415b68df8e2701a3"
+    },
+    {
+      "file": "investment-v0.10.html",
+      "sha256": "3946b47ad320efb1722ccb70c35120d81942033d8ae4827fca6aec5bba26da1f"
+    },
+    {
+      "file": "investment.html",
+      "sha256": "e795e851bfbd8626c704db569a626a6ab481cf003312fb64720bfe8f026b06cf"
+    },
+    {
+      "file": "landing.html",
+      "sha256": "9389ad4c98c4f99ace791070a792fd2d2fccc430bc149c759cda6cbe54b530b2"
+    },
+    {
+      "file": "merchant.html",
+      "sha256": "34660890b017c84eae774c9311809fceb940ee0ea1b163e0b1e47cdfec310e5d"
+    },
+    {
+      "file": "README.md",
+      "sha256": "dd0606f91d2f5dd77a12a44a6798922a80238e9c46d9ef909ad070c41b895132"
+    },
+    {
+      "file": "risk-workbench.html",
+      "sha256": "866a9d38ee2e287ec7640e7964c07a32304b15aac91b4672c877092ccc2a9b41"
+    },
+    {
+      "file": "versions/archive.js",
+      "sha256": "b1ef4976e5b5bd4433fc2c41e9302e7c8d54ee6923736304fb03cbbbc871023e"
+    },
+    {
+      "file": "versions/common.js",
+      "sha256": "11356ddb8a4e1aea51e62ca7a29513bd0be27f305374ea3000aa3f78f2145915"
+    },
+    {
+      "file": "versions/favicon.svg",
+      "sha256": "867f5f46d3301e8f4c74ec27c397408dd9ed7a9bc0e56f6454e9a8baa95fa204"
+    },
+    {
+      "file": "versions/glass.css",
+      "sha256": "ef937b275e7de90b742306e4155d3c0df169d4405c38cff47e7d746f7f74f40c"
+    },
+    {
+      "file": "versions/investment-legacy.js",
+      "sha256": "93f39fd39062e891cf088a7e655a7f9f9eb4e12e6408f71d0af0fc2f2a1d0292"
+    },
+    {
+      "file": "versions/investment.js",
+      "sha256": "8e76de47d4c307c0fb9b45502ff3094ed2de897bca7ff69a1acf3e8374f16bb2"
+    },
+    {
+      "file": "versions/landing.css",
+      "sha256": "0f84550e4541f39622de13fdcef4df7afc5d94b7055eecf4571ffb4b023dbb8b"
+    },
+    {
+      "file": "versions/landing.js",
+      "sha256": "89cfdf712ab66e4684bb95725905c549c7e2081602330abd95fa0f862d2837e3"
+    },
+    {
+      "file": "versions/merchant.js",
+      "sha256": "f54eaff1f53eaf4590dcc1a8a43bcbe017518056cdb8995f92febd312171152d"
+    },
+    {
+      "file": "versions/presentation.mjs",
+      "sha256": "3c101315ff25b886969f5a88dee77d39ecdf0d3ba6a35c86c64a47ff4f4404d8"
+    },
+    {
+      "file": "versions/preview.css",
+      "sha256": "f7f76086db484d6d2c0236cee97be03c3b9b3646eda9d28a1526e0bbea3a5654"
+    },
+    {
+      "file": "versions/product-overrides.css",
+      "sha256": "2312064f7fd803535212fdaffc445d2ab355f618d4b3dac21274507e764a0e5b"
+    },
+    {
+      "file": "versions/site-context.mjs",
+      "sha256": "65e13b673fb67e8991caee1740dfdf0574a1a0ba2c3d1d9eab56f9ec2892ad00"
+    },
+    {
+      "file": "versions/site-shell.css",
+      "sha256": "8ad1046395e9b195700bdc430d9572273c86b64cb40388cbe422d2ffc1a631b9"
+    },
+    {
+      "file": "versions/style.css",
+      "sha256": "8d875cac265f673e2408a48fc0238050b68553ab7ccd082ac89e5a8b7eb5f519"
+    },
+    {
+      "file": "versions/team-logo-transparent.png",
+      "sha256": "fba7a4e1b36b9f8f40057cf655f446009c5943bd6bbfbd1d0f3d6d0b14b246d6"
+    },
+    {
+      "file": "versions/tokens.css",
+      "sha256": "83aebf27a001e1bd8cceb871c73e69891cb9f0134d62907af1a243441e81db35"
+    },
+    {
+      "file": "versions/workspace-investment.js",
+      "sha256": "655daa9cbeb9c5b0e6e334517d1e96d127ac5c0d0145f66a7d54dfb36c29ec4c"
+    },
+    {
+      "file": "versions/workspace-model.mjs",
+      "sha256": "6cd6dab59970da850e8b4d04dae3dd9f955d1026245fa1d1b1e257b3f1580890"
+    },
+    {
+      "file": "versions/workspace.css",
+      "sha256": "1132851c154575885f1f6b7c5c515f7860d014f47bd15543a2f8fd97c27bbc5d"
+    },
+    {
+      "file": "versions/workspace.js",
+      "sha256": "09179924be248d6976aeccfde5094a54ac93d5bc8b3a4a755320a41ab76741b5"
+    },
+    {
+      "file": "workspace.html",
+      "sha256": "762cae1163af7fc62c47273721e67ed1593676bc72dbc86eb2f69b1e4516df7e"
+    }
+  ],
+  "scan": {
+    "rules": [
+      "privateKey",
+      "githubToken",
+      "providerKey",
+      "credentialLiteral"
+    ],
+    "hits": []
+  },
+  "packaging": [
+    "Preview notice",
+    "Legacy independent Risk tool unavailable; no cross-service calls",
+    "Static-only source disclosure"
+  ]
+}
