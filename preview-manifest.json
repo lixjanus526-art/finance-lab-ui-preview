@@ -1,7 +1,7 @@
 {
   "sourceRepository": "Fintechathon-agent/Fintechathon-agent",
   "sourceBranch": "codex/ui-site-integration-v1",
-  "sourceCommit": "c5ca8af13cb160c09e2bee7273d1ea850151ffaa",
+  "sourceCommit": "c0dea2ee45c559462ce0d427a42de3d0d1c93ecb",
   "reviewedMain": "e51ce9bb4e30cd409414ef55f8f9a5eddd065dda",
   "mode": "PREVIEW_STATIC_UI_ONLY",
   "backend": "NOT_CONNECTED",
@@ -16,7 +16,7 @@
     },
     {
       "file": "catalog.html",
-      "sha256": "9a32c153634845114853d4d4cadb62f7aafac48a5d631bf2585d82d97a1fd586"
+      "sha256": "aa1018f521bfe07f1676ebffa7f598ea8745bba8cdf77c9a63371b04f532a9bf"
     },
     {
       "file": "index.html",
@@ -24,23 +24,23 @@
     },
     {
       "file": "investment-v0.10.html",
-      "sha256": "3946b47ad320efb1722ccb70c35120d81942033d8ae4827fca6aec5bba26da1f"
+      "sha256": "ad10751b843074c43dac1ef1bba03e23a0d6bf28aacd8bd7c2629487d9cde486"
     },
     {
       "file": "investment.html",
-      "sha256": "e795e851bfbd8626c704db569a626a6ab481cf003312fb64720bfe8f026b06cf"
+      "sha256": "60d472218a5e7d0ba1f1498369563c6e1c8ea012898d6df738becca9f27d58e7"
     },
     {
       "file": "landing.html",
-      "sha256": "70207e8c50524192673a4c54abe43c64723661d8fedf064c59a3d4da75f13c6d"
+      "sha256": "621a39afce0f83ab6dd98bb532ac855bc30953fab2e5a48b1da601ac630be957"
     },
     {
       "file": "merchant.html",
-      "sha256": "34660890b017c84eae774c9311809fceb940ee0ea1b163e0b1e47cdfec310e5d"
+      "sha256": "c4ae0f64b20cef8477a5e4bd1fae35c61d74f65baa4f8570806461f74628e629"
     },
     {
       "file": "README.md",
-      "sha256": "c5d01e5f7a2afdb7c581a74932f0bfbb530fc6e5da78acd7984217541c68c897"
+      "sha256": "387093f3ef0af5b9b056e0a6b82f32d85acfd8b960fa507166337a149a6d995f"
     },
     {
       "file": "risk-workbench.html",
@@ -72,7 +72,7 @@
     },
     {
       "file": "versions/landing.css",
-      "sha256": "465188eef460907ae218be945baacfba85556bf248d5676b1ad7784c3ad2bf95"
+      "sha256": "f0fb245b0801cc7362158461fc65e74c5119d482b2a1996a25ce7620566c1e83"
     },
     {
       "file": "versions/landing.js",
@@ -132,7 +132,7 @@
     },
     {
       "file": "workspace.html",
-      "sha256": "70033726c56bef1de5c454a87a48e4a08620d756ed737bd02defdae08bd71385"
+      "sha256": "e8b756efbf1b013216b69e6d3bedfc83dce922fa32120dee18952405fba52b71"
     }
   ],
   "scan": {
