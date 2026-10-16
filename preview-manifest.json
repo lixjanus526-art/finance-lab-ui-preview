@@ -1,8 +1,8 @@
 {
   "sourceRepository": "Fintechathon-agent/Fintechathon-agent",
   "sourceBranch": "codex/ui-site-integration-v1",
-  "sourceCommit": "9314e42a60cfe07219b343088331f5750cc685e0",
-  "reviewedMain": "0e0fa1944bce2cd122ad0611644f9346214230a9",
+  "sourceCommit": "c5ca8af13cb160c09e2bee7273d1ea850151ffaa",
+  "reviewedMain": "e51ce9bb4e30cd409414ef55f8f9a5eddd065dda",
   "mode": "PREVIEW_STATIC_UI_ONLY",
   "backend": "NOT_CONNECTED",
   "files": [
@@ -32,7 +32,7 @@
     },
     {
       "file": "landing.html",
-      "sha256": "9389ad4c98c4f99ace791070a792fd2d2fccc430bc149c759cda6cbe54b530b2"
+      "sha256": "4a3bd398301ab9358df304418fe091ffb842b55703abda9d0b5cde97a88dde34"
     },
     {
       "file": "merchant.html",
@@ -40,7 +40,7 @@
     },
     {
       "file": "README.md",
-      "sha256": "dd0606f91d2f5dd77a12a44a6798922a80238e9c46d9ef909ad070c41b895132"
+      "sha256": "c5d01e5f7a2afdb7c581a74932f0bfbb530fc6e5da78acd7984217541c68c897"
     },
     {
       "file": "risk-workbench.html",
@@ -72,7 +72,7 @@
     },
     {
       "file": "versions/landing.css",
-      "sha256": "0f84550e4541f39622de13fdcef4df7afc5d94b7055eecf4571ffb4b023dbb8b"
+      "sha256": "8d086dcc02e8574a851ed65a7a9a92b21dda8e0804fba2cd1d44a8bbf2a6fac2"
     },
     {
       "file": "versions/landing.js",
