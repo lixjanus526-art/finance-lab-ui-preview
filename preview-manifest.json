@@ -1,7 +1,7 @@
 {
   "sourceRepository": "Fintechathon-agent/Fintechathon-agent",
   "sourceBranch": "codex/ui-site-integration-v1",
-  "sourceCommit": "c0dea2ee45c559462ce0d427a42de3d0d1c93ecb",
+  "sourceCommit": "a007143ae5fd22750442e3ce79880aceec3baf56",
   "reviewedMain": "e51ce9bb4e30cd409414ef55f8f9a5eddd065dda",
   "mode": "PREVIEW_STATIC_UI_ONLY",
   "backend": "NOT_CONNECTED",
@@ -40,7 +40,7 @@
     },
     {
       "file": "README.md",
-      "sha256": "387093f3ef0af5b9b056e0a6b82f32d85acfd8b960fa507166337a149a6d995f"
+      "sha256": "595af5670b9d08a98686a8975917243c5beadd0979c988f963a2ca8bbe112999"
     },
     {
       "file": "risk-workbench.html",
@@ -124,7 +124,7 @@
     },
     {
       "file": "versions/workspace.css",
-      "sha256": "1132851c154575885f1f6b7c5c515f7860d014f47bd15543a2f8fd97c27bbc5d"
+      "sha256": "7cd5efcbf48e381caca4ac2668fe8dfc5ce63c44bf17ea486fa890b494178b02"
     },
     {
       "file": "versions/workspace.js",
@@ -132,7 +132,7 @@
     },
     {
       "file": "workspace.html",
-      "sha256": "e8b756efbf1b013216b69e6d3bedfc83dce922fa32120dee18952405fba52b71"
+      "sha256": "f672b52526155d7adf6faf1d83c43cd25a52aad6cc3a4fcbb4b5f15ff400557d"
     }
   ],
   "scan": {

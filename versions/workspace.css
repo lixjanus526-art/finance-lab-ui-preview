@@ -130,7 +130,8 @@ body.unified-workspace,body.unified-directory{font-family:'Segoe UI','Microsoft 
 .brand-logo{width:36px;height:36px}.workspace-brand{max-width:100%;gap:9px}
 .brand-title .brand-k{font-size:22px}.workspace-brand small{line-height:1.5}
 .unified-workspace .workspace-nav{margin-top:8px;gap:4px}
-.unified-workspace .workspace-nav a{min-height:44px;border-radius:999px;padding:10px 2px}
+.unified-workspace .workspace-nav{grid-template-columns:repeat(3,minmax(0,1fr)) minmax(max-content,1.2fr)}
+.unified-workspace .workspace-nav a{display:flex;align-items:center;justify-content:center;justify-self:center;width:max-content;max-width:100%;min-height:44px;border-radius:8px;padding:8px 6px;white-space:nowrap;line-height:1.2;font-size:clamp(12px,3.3vw,13px)}
 .unified-workspace [data-panel]{padding:16px 12px;scroll-margin-top:128px}
 .unified-workspace .command-panel textarea{min-height:96px}
 .unified-workspace .workspace-hero{padding-bottom:16px}
