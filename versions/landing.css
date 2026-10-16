@@ -1,4 +1,4 @@
-@import url('/versions/glass.css');
+@import url('./glass.css');
 /* Landing components replace the former orbit-based presentation in full. */
 :root { color-scheme:dark; font-family:'Segoe UI','Microsoft YaHei',sans-serif; background:#0b0a09; color:#f3eee8; }
 * { box-sizing:border-box; }

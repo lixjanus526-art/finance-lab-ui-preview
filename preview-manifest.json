@@ -12,7 +12,7 @@
     },
     {
       "file": "build-info.json",
-      "sha256": "569988676928615a81a0a5c0adc497b25a85e823f03cbb2f0af5e6f05cad650c"
+      "sha256": "1cf6c967b857046d3ab3d2e7b505fce5ec0da3d6a6ed192c7ce434a62796fc90"
     },
     {
       "file": "catalog.html",
@@ -32,7 +32,7 @@
     },
     {
       "file": "landing.html",
-      "sha256": "4a3bd398301ab9358df304418fe091ffb842b55703abda9d0b5cde97a88dde34"
+      "sha256": "a6368ca160d7d0d587d4d78fda4095532bd14c12b5867e579559faa2f9f40874"
     },
     {
       "file": "merchant.html",
@@ -72,7 +72,7 @@
     },
     {
       "file": "versions/landing.css",
-      "sha256": "8d086dcc02e8574a851ed65a7a9a92b21dda8e0804fba2cd1d44a8bbf2a6fac2"
+      "sha256": "465188eef460907ae218be945baacfba85556bf248d5676b1ad7784c3ad2bf95"
     },
     {
       "file": "versions/landing.js",
@@ -88,7 +88,7 @@
     },
     {
       "file": "versions/preview.css",
-      "sha256": "87b4107cdf62a4060752fa70013fa86180d185f96e5ea7dfcf45cde6f31eea7a"
+      "sha256": "0fbca6ce43cf62228274c4d91e7778934fcbac1e5ad4c7ae3d5e2745ef0e8253"
     },
     {
       "file": "versions/product-overrides.css",
