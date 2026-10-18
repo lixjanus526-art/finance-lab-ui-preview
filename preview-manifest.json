@@ -12,11 +12,11 @@
     },
     {
       "file": "build-info.json",
-      "sha256": "1cf6c967b857046d3ab3d2e7b505fce5ec0da3d6a6ed192c7ce434a62796fc90"
+      "sha256": "569988676928615a81a0a5c0adc497b25a85e823f03cbb2f0af5e6f05cad650c"
     },
     {
       "file": "catalog.html",
-      "sha256": "aa1018f521bfe07f1676ebffa7f598ea8745bba8cdf77c9a63371b04f532a9bf"
+      "sha256": "f6a22f0a6dfb9868b9583af87c4eb15eb7fa86f4343b93553b86efc8ed90c6f9"
     },
     {
       "file": "index.html",
@@ -32,15 +32,15 @@
     },
     {
       "file": "landing.html",
-      "sha256": "621a39afce0f83ab6dd98bb532ac855bc30953fab2e5a48b1da601ac630be957"
+      "sha256": "f79f98d956f6328125e01a077302a028e1e5aa6e5817f15b6ff2024d58b74815"
     },
     {
       "file": "merchant.html",
-      "sha256": "c4ae0f64b20cef8477a5e4bd1fae35c61d74f65baa4f8570806461f74628e629"
+      "sha256": "1d274ac911d8f7463946e23acf0d37fd62edbf62b2f2483db3220704ac9b165a"
     },
     {
       "file": "README.md",
-      "sha256": "595af5670b9d08a98686a8975917243c5beadd0979c988f963a2ca8bbe112999"
+      "sha256": "88625ab13b44ad61456b3f2142b073f5f569b49646f1b353849930974ccd9833"
     },
     {
       "file": "risk-workbench.html",
@@ -72,15 +72,11 @@
     },
     {
       "file": "versions/landing.css",
-      "sha256": "f0fb245b0801cc7362158461fc65e74c5119d482b2a1996a25ce7620566c1e83"
+      "sha256": "cbf35390e76db3698330a254e519ebbed2aa556f872175cc8d5500cc012cfd7c"
     },
     {
       "file": "versions/landing.js",
       "sha256": "89cfdf712ab66e4684bb95725905c549c7e2081602330abd95fa0f862d2837e3"
-    },
-    {
-      "file": "versions/merchant.js",
-      "sha256": "f54eaff1f53eaf4590dcc1a8a43bcbe017518056cdb8995f92febd312171152d"
     },
     {
       "file": "versions/presentation.mjs",
@@ -88,7 +84,7 @@
     },
     {
       "file": "versions/preview.css",
-      "sha256": "0fbca6ce43cf62228274c4d91e7778934fcbac1e5ad4c7ae3d5e2745ef0e8253"
+      "sha256": "87b4107cdf62a4060752fa70013fa86180d185f96e5ea7dfcf45cde6f31eea7a"
     },
     {
       "file": "versions/product-overrides.css",
@@ -133,6 +129,22 @@
     {
       "file": "workspace.html",
       "sha256": "f672b52526155d7adf6faf1d83c43cd25a52aad6cc3a4fcbb4b5f15ff400557d"
+    },
+    {
+      "file": ".gitignore",
+      "sha256": "74915c29af71239177f006327120d0c757edd618353228c4af5f0ee23ce8d78a"
+    },
+    {
+      "file": "merchant/index.html",
+      "sha256": "586a4c73292ba0dbb42803d7a7144db37638f96631012772f2340a04a6fc843d"
+    },
+    {
+      "file": "versions/merchant.html",
+      "sha256": "032c9f33404070f919513543b565a14a9216787f48757553184d474aff768b02"
+    },
+    {
+      "file": ".gitattributes",
+      "sha256": "97c257bc6c2fd9a1ff838c5b9b2470d8bfc17adc6643ff4503d513b18ef01b6f"
     }
   ],
   "scan": {
@@ -148,5 +160,12 @@
     "Preview notice",
     "Legacy independent Risk tool unavailable; no cross-service calls",
     "Static-only source disclosure"
-  ]
+  ],
+  "publicationUpdate": {
+    "date": "2026-10-18",
+    "candidate": "investment-only/investment.html",
+    "backend": "NOT_CONNECTED",
+    "preservedWorkspace": true,
+    "merchantRetired": true
+  }
 }

@@ -14,3 +14,9 @@ Rollback: revert the publishing commit to a verified prior artifact; for the fir
 2026-10-16: explicit two-line mobile headings, flowing CTA, single-row three-step navigation, punctuation-free static headings. Browser checks 320-1024px passed.
 
 Mobile navigation: single-line centered labels in compact 8px rounded rectangles; 44px touch height retained.
+
+## 2026-10-18：个人投资顾问独立候选
+
+预览：https://lixjanus526-art.github.io/finance-lab-ui-preview/investment-only/investment.html
+
+仅含虚构数据和浏览器模拟计算，AI 后端未连接，不执行交易。原统一工作台保留，店主入口下线，旧地址跳转到个人投资顾问。源码、测试和交付说明由团队 `team-staging/ui/investment-only-20261018/` 候选分支供审核；未更新 team-release，未合并团队 main。
