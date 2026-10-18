@@ -40,7 +40,7 @@
     },
     {
       "file": "README.md",
-      "sha256": "88625ab13b44ad61456b3f2142b073f5f569b49646f1b353849930974ccd9833"
+      "sha256": "19738baad50df39024a5088c84188fabe0b6416a79aa69bd71cc7fa86470c360"
     },
     {
       "file": "risk-workbench.html",
@@ -166,6 +166,7 @@
     "candidate": "investment-only/investment.html",
     "backend": "NOT_CONNECTED",
     "preservedWorkspace": true,
-    "merchantRetired": true
+    "merchantRetired": true,
+    "assistant": "TINGLAN_UI_READY_OWNER_CONFIGURATION_REQUIRED"
   }
 }

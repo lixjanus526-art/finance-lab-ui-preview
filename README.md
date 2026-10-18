@@ -20,3 +20,9 @@ Mobile navigation: single-line centered labels in compact 8px rounded rectangles
 预览：https://lixjanus526-art.github.io/finance-lab-ui-preview/investment-only/investment.html
 
 仅含虚构数据和浏览器模拟计算，AI 后端未连接，不执行交易。原统一工作台保留，店主入口下线，旧地址跳转到个人投资顾问。源码、测试和交付说明由团队 `team-staging/ui/investment-only-20261018/` 候选分支供审核；未更新 team-release，未合并团队 main。
+
+## 听澜安全 AI 候选（2026-10-18）
+
+投资页已加入结构化偏好输入与真实网络客户端；默认未配置付费入口，不发送模型请求。Cloudflare Owner 审核部署并提供受保护地址后启用。浏览器不持有模型 Key 或团队共享凭证。Mock 联调通过不代表真实百炼已上线。
+
+交付代码、配置与操作清单位于团队仓库 `team-staging/ui/tinglan-ai-20261018/`。既有确定性计算和统一工作台保留。
