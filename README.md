@@ -26,3 +26,9 @@ Mobile navigation: single-line centered labels in compact 8px rounded rectangles
 投资页已加入结构化偏好输入与真实网络客户端；默认未配置付费入口，不发送模型请求。Cloudflare Owner 审核部署并提供受保护地址后启用。浏览器不持有模型 Key 或团队共享凭证。Mock 联调通过不代表真实百炼已上线。
 
 交付代码、配置与操作清单位于团队仓库 `team-staging/ui/tinglan-ai-20261018/`。既有确定性计算和统一工作台保留。
+
+## 百炼真实验收（2026-10-19）
+
+两次授权的本机真实调用均 HTTP 200，返回 qwen3.8-flash；本机网页展示与供应商结果一致。Worker dry-run 和本地启动通过。云端仍是 Llama；Access、Secrets、部署及大陆真实网络验收待 Owner 完成。当前公开预览保持 endpoint=null，未启用付费入口。
+
+[完整验收与 Owner 操作](acceptance/2026-10-19/ACCEPTANCE-2026-10-19.md)。真实与 Mock 证据分开，不将本机成功称为生产上线。
