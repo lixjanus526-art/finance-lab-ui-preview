@@ -32,3 +32,9 @@ Mobile navigation: single-line centered labels in compact 8px rounded rectangles
 两次授权的本机真实调用均 HTTP 200，返回 qwen3.8-flash；本机网页展示与供应商结果一致。Worker dry-run 和本地启动通过。云端仍是 Llama；Access、Secrets、部署及大陆真实网络验收待 Owner 完成。当前公开预览保持 endpoint=null，未启用付费入口。
 
 [完整验收与 Owner 操作](acceptance/2026-10-19/ACCEPTANCE-2026-10-19.md)。真实与 Mock 证据分开，不将本机成功称为生产上线。
+
+## 投资需求完整分析（2026-10-19 第二轮）
+
+已补齐金额、期限、风险偏好和目标输入；指定大学生测试的一次真实 qwen3.8-flash 调用 HTTP 200，1148 tokens，网页完整显示五方面分析。默认公开入口仍未配置，等待 Cloudflare Owner 登录、Access 与受控域名部署，不能称为生产上线。
+
+[本轮真实证据和 Owner 阻塞](acceptance/2026-10-19/PREFERENCE-ACCEPTANCE-2026-10-19.md)。
