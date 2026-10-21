@@ -32,7 +32,7 @@
     },
     {
       "file": "landing.html",
-      "sha256": "56adb645536b85fab82e49f7165b34733b99c18d68c3cc75f3215ca98c4e46d1"
+      "sha256": "29336b3e30a842174939b4ccce7c83dad984be6df80835013607c8da45bb6846"
     },
     {
       "file": "merchant.html",
@@ -148,7 +148,7 @@
     },
     {
       "file": "versions/workspace-refinement.css",
-      "sha256": "061c063381dbe8dcdb7b88e2d43f73a54991118ec9567a1a6a8bd09b19bec09d"
+      "sha256": "ac913103b6aaa1af6681d0ad9e2247e774351e8de5156792e1641c962cf6d819"
     }
   ],
   "scan": {

@@ -83,7 +83,14 @@ body.refined-workspace.archive-workbench { --accent:var(--signal-orange); --gree
 .refined-workspace .static-preview-notice { background:transparent; border:0; color:var(--muted); font-size:12px; }
 /* The native link covers its card, including the decorative visual. */
 .refined-home .feature-link::after { content:''; position:absolute; inset:0; z-index:3; border-radius:inherit; }
-.refined-home .feature-card { cursor:pointer; }
+/* Equal copy areas keep the two card entrances aligned when text wraps. */
+.refined-home .feature-card { cursor:pointer; display:flex; flex-direction:column; }
+.refined-home .feature-card>p { flex:1; }
+@media(min-width:701px) {
+  /* Preserve the original collapsed spacing in the column layout. */
+  .refined-home .feature-card h3 { margin-top:0; }
+  .refined-home .feature-card>p { margin-top:0; }
+}
 .refined-home .feature-card:focus-within { outline:2px solid var(--signal-orange); outline-offset:4px; }
 .refined-home .liquid-vessel { pointer-events:none; }
 .refined-home .landing-nav nav { gap:22px; }
