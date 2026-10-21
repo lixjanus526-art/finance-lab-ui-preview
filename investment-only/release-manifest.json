@@ -26,7 +26,7 @@
     },
     {
       "file": "investment.html",
-      "sha256": "056dff7e0a9e02cdafedf3b6c647a1f4bcc193bfabce49ff42335a6fc77f3dd6"
+      "sha256": "f671b7f35feddb3b6ef2ea987ac913023fe3eebe5f2b3eb69438e19cc225e5b2"
     },
     {
       "file": "landing.html",
@@ -70,7 +70,7 @@
     },
     {
       "file": "versions/investment.js",
-      "sha256": "d6b5a3bb04042d7c19b2ba5858cf302d935b0344b9600645e0c01eb8ebda0183"
+      "sha256": "61e8f7ae746e6c965f5ed0abe5ca45f69ee98307fafb7accf453c05d8fa10129"
     },
     {
       "file": "versions/kosx.css",
@@ -127,6 +127,10 @@
     {
       "file": "versions/ui-model.mjs",
       "sha256": "36a541873a0b49b455aca9fe8c380eb0c145c87e18ed499476e86117196eaff6"
+    },
+    {
+      "file": "versions/investment-theme.css",
+      "sha256": "b770dfb0fa957c0e88611a721688b284c4b29ed018e704498795b63a92eeb78f"
     }
   ],
   "liveEntry": "https://xinlan-qwen38-share.lixjanus526.workers.dev/investment-only/investment.html#ai-assistant",
@@ -142,5 +146,11 @@
       "file": "../versions/workspace-refinement.css",
       "sha256": "061c063381dbe8dcdb7b88e2d43f73a54991118ec9567a1a6a8bd09b19bec09d"
     }
+  },
+  "screenshotFollowup": {
+    "date": "2026-10-21",
+    "scope": "THREE_TARGETED_UI_REPAIRS",
+    "backendChanged": false,
+    "modelCalls": 0
   }
 }

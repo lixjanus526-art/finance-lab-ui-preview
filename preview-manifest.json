@@ -32,7 +32,7 @@
     },
     {
       "file": "landing.html",
-      "sha256": "ef47b685287ab5399418490595c13a90d0bb259f154a8f483b516cec6b83f1b9"
+      "sha256": "56adb645536b85fab82e49f7165b34733b99c18d68c3cc75f3215ca98c4e46d1"
     },
     {
       "file": "merchant.html",
@@ -180,5 +180,11 @@
     "scope": "UI_ONLY",
     "backendChanged": false,
     "logoChanged": false
+  },
+  "screenshotFollowup": {
+    "date": "2026-10-21",
+    "scope": "THREE_TARGETED_UI_REPAIRS",
+    "backendChanged": false,
+    "modelCalls": 0
   }
 }
