@@ -11,65 +11,32 @@ const eventNames = {
 };
 function text(id, value) { $(id).textContent = value; }
 const panels = [...document.querySelectorAll("[data-panel]")];
-const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
-let activeView = "", scrollFrame = 0;
-function activate(view, updateHash = true) {
-  if (view === activeView) return;
-  activeView = view;
-  panels.forEach(panel => panel.classList.toggle("is-active", panel.dataset.panel === view));
-  document.querySelectorAll("[data-view]").forEach(link => {
-    const selected = link.dataset.view === view;
-    link.classList.toggle("is-active", selected);
-    if (selected) link.setAttribute("aria-current", "location");
-    else link.removeAttribute("aria-current");
+// Each navigation item opens one workspace; browser history preserves the selection.
+export function navigate(view, focus = false, updateHistory = true) {
+  if (!panels.some(panel => panel.dataset.panel === view)) view = 'workspace';
+  panels.forEach(panel => { panel.hidden = panel.dataset.panel !== view; panel.classList.remove('is-active'); });
+  document.querySelectorAll('[data-view]').forEach(link => {
+    if (link.dataset.view === view) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
   });
-  if (updateHash) history.replaceState(null, "", location.pathname + location.search + "#" + view);
+  if (updateHistory && location.hash !== '#' + view) history.pushState(null, '', '#' + view);
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  if (focus) document.getElementById(view + '-heading')?.focus({ preventScroll: true });
 }
-function centerFocus() {
-  scrollFrame = 0;
-  const rail = document.querySelector(".workspace-rail");
-  const inset = innerWidth <= 850 ? rail.getBoundingClientRect().bottom : 0;
-  const center = inset + (innerHeight - inset) * .48;
-  let best = panels[0], distance = Infinity;
-  for (const panel of panels) {
-    const box = panel.getBoundingClientRect();
-    const gap = center < box.top ? box.top - center : center > box.bottom ? center - box.bottom : 0;
-    if (gap < distance) { best = panel; distance = gap; }
-  }
-  activate(best.dataset.panel);
-}
-function scheduleFocus() { if (!scrollFrame) scrollFrame = requestAnimationFrame(centerFocus); }
-export function navigate(view, focus = false) {
-  if (!panels.some(p => p.dataset.panel === view)) view = "workspace";
-  activate(view);
-  const panel = panels.find(p => p.dataset.panel === view);
-  panel.style.scrollMarginTop = (innerWidth <= 850 ? document.querySelector(".workspace-rail").offsetHeight + 20 : 24) + "px";
-  panel.scrollIntoView({behavior: reducedMotion.matches ? "instant" : "smooth", block:"start"});
-  if (focus) document.getElementById(view + "-heading")?.focus({preventScroll:true});
-}
-panels.forEach(panel => { panel.hidden = false; });
-const observer = new IntersectionObserver(scheduleFocus, {threshold:[0,.1,.25,.5,.75,1]});
-panels.forEach(panel => observer.observe(panel));
-addEventListener("scroll", scheduleFocus, {passive:true});
-addEventListener("resize", scheduleFocus);
 function route() {
   const key = location.hash.slice(1);
-  navigate(key === "portfolio-flow" ? "banking" : key || "workspace");
+  navigate(key === 'portfolio-flow' ? 'banking' : key || 'workspace', false, false);
 }
-window.addEventListener("hashchange", route);
-document.addEventListener("click", event => {
+window.addEventListener('hashchange', route);
+window.addEventListener('popstate', route);
+document.addEventListener('click', event => {
   const link = event.target.closest('a[href^="#"]');
-  const key = link?.getAttribute("href").slice(1);
-  const view = key === "portfolio-flow" ? "banking" : key;
-  if (!panels.some(p => p.dataset.panel === view)) return;
+  const key = link?.getAttribute('href').slice(1);
+  const view = key === 'portfolio-flow' ? 'banking' : key;
+  if (!panels.some(panel => panel.dataset.panel === view)) return;
   event.preventDefault(); navigate(view, true);
 });
-const initialView = location.hash.slice(1) || "workspace";
-// Avoid moving the browser keyboard starting point on an ordinary page load.
-requestAnimationFrame(() => {
-  if (initialView === "workspace") activate("workspace");
-  else navigate(initialView === "portfolio-flow" ? "banking" : initialView);
-});
+route();
 $("#open-portfolio").onclick = () => {
   const draft = $("#task-intent").value.trim();
   $("#intent-preview").hidden = !draft;

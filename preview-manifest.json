@@ -16,7 +16,7 @@
     },
     {
       "file": "catalog.html",
-      "sha256": "f6a22f0a6dfb9868b9583af87c4eb15eb7fa86f4343b93553b86efc8ed90c6f9"
+      "sha256": "a1ad688ba4584319d1b2fba86734e34a5bf9dd28d198cb4a1b093d9e64bdb5ee"
     },
     {
       "file": "index.html",
@@ -28,11 +28,11 @@
     },
     {
       "file": "investment.html",
-      "sha256": "60d472218a5e7d0ba1f1498369563c6e1c8ea012898d6df738becca9f27d58e7"
+      "sha256": "20ca5df947169b3abed696e1bd34538a099eae73f8340c9324716bd954126287"
     },
     {
       "file": "landing.html",
-      "sha256": "f79f98d956f6328125e01a077302a028e1e5aa6e5817f15b6ff2024d58b74815"
+      "sha256": "ef47b685287ab5399418490595c13a90d0bb259f154a8f483b516cec6b83f1b9"
     },
     {
       "file": "merchant.html",
@@ -40,15 +40,15 @@
     },
     {
       "file": "README.md",
-      "sha256": "19738baad50df39024a5088c84188fabe0b6416a79aa69bd71cc7fa86470c360"
+      "sha256": "63917c0c2bb236c03f7219fcf36db49dfbf471d8ecf49949b598e33fd0329bef"
     },
     {
       "file": "risk-workbench.html",
-      "sha256": "866a9d38ee2e287ec7640e7964c07a32304b15aac91b4672c877092ccc2a9b41"
+      "sha256": "5e02edf855a95480035f728e591fa9a3dcc0df13ce3852fc6e5c0c176a3f4dba"
     },
     {
       "file": "versions/archive.js",
-      "sha256": "b1ef4976e5b5bd4433fc2c41e9302e7c8d54ee6923736304fb03cbbbc871023e"
+      "sha256": "4f41e8d85acbf0b74c2f9fc49089d41961e34cebf3d9616c7f963bbf5527eac5"
     },
     {
       "file": "versions/common.js",
@@ -76,7 +76,7 @@
     },
     {
       "file": "versions/landing.js",
-      "sha256": "89cfdf712ab66e4684bb95725905c549c7e2081602330abd95fa0f862d2837e3"
+      "sha256": "64eda8f9ac3eef57e158f64740debe641c3f3987af9171eb182242afc08579b1"
     },
     {
       "file": "versions/presentation.mjs",
@@ -112,7 +112,7 @@
     },
     {
       "file": "versions/workspace-investment.js",
-      "sha256": "655daa9cbeb9c5b0e6e334517d1e96d127ac5c0d0145f66a7d54dfb36c29ec4c"
+      "sha256": "33ee0eef61f900c222cc386f4c015527535b86c6b57c335da24d43d56c471824"
     },
     {
       "file": "versions/workspace-model.mjs",
@@ -124,11 +124,11 @@
     },
     {
       "file": "versions/workspace.js",
-      "sha256": "09179924be248d6976aeccfde5094a54ac93d5bc8b3a4a755320a41ab76741b5"
+      "sha256": "e3b4d0876f3b159f3371d2ecd999eca8b921c6f8d3ab41c0809c6c11d7c3a328"
     },
     {
       "file": "workspace.html",
-      "sha256": "f672b52526155d7adf6faf1d83c43cd25a52aad6cc3a4fcbb4b5f15ff400557d"
+      "sha256": "76696649612e7668227a466d9119ee31a223af5608b94f353dbaff8461d2ed36"
     },
     {
       "file": ".gitignore",
@@ -145,6 +145,10 @@
     {
       "file": ".gitattributes",
       "sha256": "97c257bc6c2fd9a1ff838c5b9b2470d8bfc17adc6643ff4503d513b18ef01b6f"
+    },
+    {
+      "file": "versions/workspace-refinement.css",
+      "sha256": "061c063381dbe8dcdb7b88e2d43f73a54991118ec9567a1a6a8bd09b19bec09d"
     }
   ],
   "scan": {
@@ -168,5 +172,13 @@
     "preservedWorkspace": true,
     "merchantRetired": true,
     "assistant": "TINGLAN_UI_READY_OWNER_CONFIGURATION_REQUIRED"
+  },
+  "refinement": {
+    "date": "2026-10-21",
+    "basePreviewCommit": "57e0a6bccd890b00c8599d8bd64b62569fe3d196",
+    "teamBranch": "codex/workspace-minimal-20261021",
+    "scope": "UI_ONLY",
+    "backendChanged": false,
+    "logoChanged": false
   }
 }

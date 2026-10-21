@@ -1,5 +1,5 @@
 import { assertHealthResponse } from "./workspace-model.mjs";
-import { inputChanged, requestStarted, requestFailed, showHealth } from "./workspace.js";
+import { inputChanged, requestStarted, requestFailed, showHealth } from "./workspace.js?v=20261021-minimal";
 import { $, esc, money, pct, api, toast, downloadLink, chart, today, tip, healthCheckRequest } from "./common.js";
 import { dateStatus, planComparison } from "./presentation.mjs";
 let result, inputVersion = 0;
@@ -111,7 +111,7 @@ $("#check-form").onsubmit=async event=>{
 $("#export").onclick=()=>{if(result)downloadLink("/api/task/"+encodeURIComponent(result.task_state.task_id)+"/export");};
 async function loadPortfolio(){
   $('#retry-load').disabled=true;
-  try{await init();}catch(error){$('#run').disabled=true;$('#load-error').hidden=false;$('#load-error').textContent='ERROR · 数据读取失败：'+error.message;$('#retry-load').hidden=false;$('#service-state').textContent='ERROR · 服务暂不可用';}
+  try{await init();}catch(error){$('#run').disabled=true;$('#load-error').hidden=false;$('#load-error').textContent='ERROR · 数据读取失败：'+error.message;$('#retry-load').hidden=false;$('#service-state').textContent='组合服务未连接';}
   finally{$('#retry-load').disabled=false;}
 }
 $('#retry-load').onclick=loadPortfolio;

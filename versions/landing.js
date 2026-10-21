@@ -1,4 +1,4 @@
-import { createArchiveScene, initLiquidBalance } from './archive.js';
+import { createArchiveScene, initLiquidBalance } from './archive.js?v=20261021-minimal';
 'use strict';
 // Native scrolling remains available with or without JavaScript.
 for (const host of document.querySelectorAll('[data-archive-scene]')) host.append(createArchiveScene({density:host.dataset.archiveScene}));

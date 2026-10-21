@@ -204,7 +204,7 @@ export function initLiquidBalance(grid) {
     p.card.dataset.phase=!p.started?'waiting':p.done?'ready':'intro';
     p.button.setAttribute('aria-disabled',String(full));
     p.button.setAttribute('aria-label',p.label+(full?'（已满）':''));
-    if(p.full!==full){p.hint.innerHTML=full?'FULL':'<span class="hint-cn">点一下注入</span><span class="hint-en">TAP TO POUR</span>';p.full=full;}
+    if(p.hint && p.full!==full){p.hint.innerHTML=full?'FULL':'<span class="hint-cn">点一下注入</span><span class="hint-en">TAP TO POUR</span>';p.full=full;}
     p.card.dataset.liquidActive=String(p.started&&!p.done || p.drops.length>0 || p.shake>0 || clock<p.activeUntil);
   }
   function draw() {
