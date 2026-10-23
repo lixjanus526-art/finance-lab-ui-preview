@@ -32,7 +32,7 @@
     },
     {
       "file": "landing.html",
-      "sha256": "0faf1997537e80de4a518665f07dfd39eaecb216461a2ddd57ce74f4c509c407"
+      "sha256": "a686a8248988a73f6f33388493a3da49eba391765da6726d0871c4ebb3551d24"
     },
     {
       "file": "merchant.html",
@@ -72,7 +72,7 @@
     },
     {
       "file": "versions/landing.css",
-      "sha256": "cbf35390e76db3698330a254e519ebbed2aa556f872175cc8d5500cc012cfd7c"
+      "sha256": "456091766c1cebbe0e64fa093f045c1feca3f1f627c8b89945f0f8db20d2282f"
     },
     {
       "file": "versions/landing.js",
