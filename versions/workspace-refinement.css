@@ -108,3 +108,7 @@ body.refined-workspace.archive-workbench { --accent:var(--signal-orange); --gree
   .refined-workspace .task-cards section { margin:0; padding:12px 0; }
   .refined-workspace .live-model-link { margin-left:0; display:block; }
 }
+
+/* Keep the new conversation entrance reachable in the existing toolbar. */
+.refined-home .landing-nav nav { min-width:0; overflow-x:auto; white-space:nowrap; }
+.refined-home .landing-nav nav a { flex-shrink:0; }

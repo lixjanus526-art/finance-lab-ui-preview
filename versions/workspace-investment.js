@@ -105,13 +105,13 @@ $("#check-form").onsubmit=async event=>{
       if(result===next&&version===inputVersion)$("#evidence").textContent+="\n完整运行记录暂未读取成功，可重新检查后再试。";
     });
     showHealth(next); $("#results").hidden=false;$("#input-panel").open=false;$("#result-summary").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth",block:"start"});toast("分析完成。展开方案可查看细节。");
-  }catch(error){ if(version!==inputVersion)return; result=null; requestFailed(error); toast(error.message); }
+  }catch(error){ if(version!==inputVersion)return; result=null; requestFailed(new Error('本次检查暂时未完成，请稍后重试。')); toast('本次检查暂时未完成，请稍后重试。'); }
   finally{$("#run").disabled=false;$("#run").textContent="开始健康检查"; $("#run").removeAttribute("aria-busy");}
 };
 $("#export").onclick=()=>{if(result)downloadLink("/api/task/"+encodeURIComponent(result.task_state.task_id)+"/export");};
 async function loadPortfolio(){
   $('#retry-load').disabled=true;
-  try{await init();}catch(error){$('#run').disabled=true;$('#load-error').hidden=false;$('#load-error').textContent='ERROR · 数据读取失败：'+error.message;$('#retry-load').hidden=false;$('#service-state').textContent='组合服务未连接';}
+  try{await init();}catch(error){$('#run').disabled=true;$('#load-error').hidden=false;$('#load-error').textContent='组合资料暂时无法读取，请稍后重试。';$('#retry-load').hidden=false;$('#service-state').textContent='组合服务未连接';}
   finally{$('#retry-load').disabled=false;}
 }
 $('#retry-load').onclick=loadPortfolio;
