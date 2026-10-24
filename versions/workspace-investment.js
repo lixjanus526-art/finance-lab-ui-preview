@@ -1,5 +1,5 @@
-import { assertHealthResponse } from "./workspace-model.mjs";
-import { inputChanged, requestStarted, requestFailed, showHealth } from "./workspace.js?v=20261021-minimal";
+import { assertHealthResponse, assertRestoredHealth } from "./workspace-model.mjs";
+import { inputChanged, requestStarted, requestFailed, showHealth } from "./workspace.js?v=20261024-shell";
 import { $, esc, money, pct, api, toast, downloadLink, chart, today, tip, healthCheckRequest } from "./common.js";
 import { dateStatus, planComparison } from "./presentation.mjs";
 let result, inputVersion = 0;
@@ -16,6 +16,7 @@ async function init() {
   renderHoldings(p); $("#run").disabled=false; $("#load-error").hidden=true; $("#retry-load").hidden=true; $("#service-state").textContent="DEMO / FIXTURE · 本地 Core 已响应";
 }
 function renderHoldings(p) {
+  dispatchEvent(new CustomEvent('workspace:portfolio',{detail:{snapshot:p}}));
   const dated=dateStatus(p.as_of,today());
   $("#portfolio-stamp").textContent="演示组合 "+money(p.total_value*100);
   $("#portfolio-health").innerHTML='<span>基准日 '+esc(p.as_of.slice(0,10))+'</span><span class="date-warning">'+esc(dated.label)+'</span><span>固定虚构价格 · 不自动更新</span>';
@@ -72,6 +73,21 @@ $("#check-form").onsubmit=async event=>{
       showHealth(next); $('#input-feedback').hidden=false;
       $('#input-feedback').textContent=next.task_state.missing_fields?.length ? 'WAITING_INPUT · 缺少：'+next.task_state.missing_fields.join('、') : next.task_state.error_state?.message || '请查看我的任务中的服务端状态。'; return;
     }
+    displayHealth(next);
+  }catch(error){ if(version!==inputVersion)return; result=null; requestFailed(new Error('本次检查暂时未完成，请稍后重试。')); toast('本次检查暂时未完成，请稍后重试。'); }
+  finally{$("#run").disabled=false;$("#run").textContent="开始健康检查"; $("#run").removeAttribute("aria-busy");}
+};
+$("#export").onclick=()=>{if(result)downloadLink("/api/task/"+encodeURIComponent(result.task_state.task_id)+"/export");};
+async function loadPortfolio(){
+  $('#retry-load').disabled=true;
+  try{await init();}catch(error){$('#run').disabled=true;$('#load-error').hidden=false;$('#load-error').textContent='组合资料暂时无法读取，请稍后重试。';$('#retry-load').hidden=false;$('#service-state').textContent='组合服务未连接';}
+  finally{$('#retry-load').disabled=false;}
+}
+$('#retry-load').onclick=loadPortfolio;
+loadPortfolio();
+
+function displayHealth(next, restored=false) {
+  const version=inputVersion;
     result=next; const a=result.artifacts,m=a.health_report.metrics,s=a.simulation,view=planComparison(s.comparisons);
     if(!view.best||!view.baseline)throw new Error("模拟缺少有效结果，暂不展示结论。");
     renderHoldings(a.portfolio_snapshot);
@@ -104,15 +120,6 @@ $("#check-form").onsubmit=async event=>{
     }).catch(()=>{
       if(result===next&&version===inputVersion)$("#evidence").textContent+="\n完整运行记录暂未读取成功，可重新检查后再试。";
     });
-    showHealth(next); $("#results").hidden=false;$("#input-panel").open=false;$("#result-summary").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth",block:"start"});toast("分析完成。展开方案可查看细节。");
-  }catch(error){ if(version!==inputVersion)return; result=null; requestFailed(new Error('本次检查暂时未完成，请稍后重试。')); toast('本次检查暂时未完成，请稍后重试。'); }
-  finally{$("#run").disabled=false;$("#run").textContent="开始健康检查"; $("#run").removeAttribute("aria-busy");}
-};
-$("#export").onclick=()=>{if(result)downloadLink("/api/task/"+encodeURIComponent(result.task_state.task_id)+"/export");};
-async function loadPortfolio(){
-  $('#retry-load').disabled=true;
-  try{await init();}catch(error){$('#run').disabled=true;$('#load-error').hidden=false;$('#load-error').textContent='组合资料暂时无法读取，请稍后重试。';$('#retry-load').hidden=false;$('#service-state').textContent='组合服务未连接';}
-  finally{$('#retry-load').disabled=false;}
+    showHealth(next, {restored}); $("#results").hidden=false;$("#input-panel").open=false;if(!restored) $("#result-summary").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth",block:"start"});toast("分析完成。展开方案可查看细节。");
 }
-$('#retry-load').onclick=loadPortfolio;
-loadPortfolio();
+addEventListener("workspace:health-restored",event=>{try{assertRestoredHealth(event.detail);displayHealth(event.detail,true);}catch{/* Preserve failed source visibility instead of manufacturing a result. */}});

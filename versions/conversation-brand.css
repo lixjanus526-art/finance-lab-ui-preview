@@ -26,6 +26,20 @@ body.conversation-product { --surface:#151310; --surface-hover:#211c17; --line:#
 .balance { color:var(--text-primary); }
 .service-notice { padding:10px 24px; border-bottom:1px solid #765137; color:var(--text-secondary); background:#251b13; font-size:12px; flex-shrink:0; }
 .sidebar-bottom { margin-top:16px; }
+.conversation-embedded .app-shell { grid-template-columns:1fr; }
+.conversation-embedded .sidebar,.conversation-embedded #menu-toggle,.conversation-embedded .home-return,.conversation-embedded .topbar-divider { display:none!important; }
+.conversation-embedded .topbar { padding-inline:16px;gap:8px; }
+.conversation-embedded #thread-picker { min-width:0;max-width:160px;background:var(--surface);color:var(--text-primary);border:1px solid var(--line);border-radius:8px;padding:8px;font:12px inherit; }
+.conversation-embedded #new-chat { width:auto;margin:0;padding:8px 12px;font-size:12px;min-height:44px; }
+.conversation-embedded #new-chat svg { display:none; }
+.conversation-embedded .title-group { flex:1; }
+.conversation-embedded .topbar .title-group>span { max-width:120px; }
+@media(max-width:520px){
+ .conversation-embedded .topbar .title-group { display:none; }
+ .conversation-embedded #thread-picker { flex:1;max-width:120px; }
+ .conversation-embedded .topbar { flex-wrap:wrap;height:auto;min-height:64px; }
+ .conversation-embedded #new-chat { padding-inline:8px; }
+}
 @media(min-width:701px) and (max-width:1150px) {
   .brand { font-size:14px; }
   .brand .conversation-logo { width:52px; height:52px; }

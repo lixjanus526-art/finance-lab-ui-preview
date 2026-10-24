@@ -21,6 +21,7 @@ export function navigate(view, focus = false, updateHistory = true) {
   });
   if (updateHistory && location.hash !== '#' + view) history.pushState(null, '', '#' + view);
   window.scrollTo({ top: 0, behavior: 'instant' });
+  dispatchEvent(new CustomEvent('workspace:viewchange',{detail:{view}}));
   if (focus) document.getElementById(view + '-heading')?.focus({ preventScroll: true });
 }
 function route() {
@@ -144,6 +145,7 @@ $("#restore-form").onsubmit = async event => {
       throw new Error("任务响应不匹配，未采用。");
     auditEvents(task.audit_evidence, id);
     showHealth(task, { restored: true });
+    dispatchEvent(new CustomEvent("workspace:health-restored",{detail:task}));
     text("#restore-message", "已读取服务端原任务；仅供回看，不与当前表单绑定。");
   } catch (error) {
     if (revision === restoreRevision) text("#restore-message", "ERROR · " + error.message + "。服务重启可能导致进程内记录丢失。");

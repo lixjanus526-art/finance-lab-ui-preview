@@ -32,7 +32,7 @@
     },
     {
       "file": "landing.html",
-      "sha256": "6f0750029ae06806a8bd3da9582fcc7c020491aae059a9b4ed3d7505c3baf3d1"
+      "sha256": "54c31c99be6ab9dfff282c93aa98bad2ab53b09352a3552392af20e13d894cc5"
     },
     {
       "file": "merchant.html",
@@ -112,11 +112,11 @@
     },
     {
       "file": "versions/workspace-investment.js",
-      "sha256": "efaa1880f1d314681782f7992f41a3438a1ac101bb2057d7dcce2227eed7c47d"
+      "sha256": "2d2449cac914d25c3a926c885637fdfcfc694ea32aba6db233baa0a976427411"
     },
     {
       "file": "versions/workspace-model.mjs",
-      "sha256": "6cd6dab59970da850e8b4d04dae3dd9f955d1026245fa1d1b1e257b3f1580890"
+      "sha256": "5bb1b4e656351fb32420500ab78b342e7ed23cbdd2278d8af22e20c83b38f637"
     },
     {
       "file": "versions/workspace.css",
@@ -124,11 +124,11 @@
     },
     {
       "file": "versions/workspace.js",
-      "sha256": "e3b4d0876f3b159f3371d2ecd999eca8b921c6f8d3ab41c0809c6c11d7c3a328"
+      "sha256": "6e02fad356a28ca46e009e5ef76b668372e1091a080583eb6bb8f172da573e4f"
     },
     {
       "file": "workspace.html",
-      "sha256": "bd04ff89ae5f83ee5ddb765e761b7bc7375a57db93a302fdc2c98e910c54793f"
+      "sha256": "8a6dedf11ef2b134665f8fc80b9236ef5a225cda999b8239065be897cd516da8"
     },
     {
       "file": ".gitignore",
@@ -144,7 +144,7 @@
     },
     {
       "file": ".gitattributes",
-      "sha256": "8c44368e27c58ecdf71e84ec6f5b2d77c9bfbcb43ba459b44fd71d4c91b26fbc"
+      "sha256": "f6c7b5f0019a4f3f1dea12a0806eb279149d9d4a95fb56c6bdfe49d19244f548"
     },
     {
       "file": "versions/workspace-refinement.css",
@@ -152,7 +152,7 @@
     },
     {
       "file": "CONVERSATION.md",
-      "sha256": "d3371d613ba3b4db89bfbd54e3637ad9ad2f07105dbb533caffecf3fa99c82d7"
+      "sha256": "5ed2033835506e9df17a16a99c5c4e44b2868d4931b21ccdf0f7d341d2814ac5"
     },
     {
       "file": "conversation-config.json",
@@ -164,7 +164,7 @@
     },
     {
       "file": "versions/conversation-brand.css",
-      "sha256": "e027f660ce13a6ba1ab9242b432088cf3e0be997a4328dc48bf65bb5f8b06cc7"
+      "sha256": "9712edb13f36108947011ac7692495a557546adf1c55b6b21493e8327a59e353"
     },
     {
       "file": "versions/conversation-brand.mjs",
@@ -176,7 +176,23 @@
     },
     {
       "file": "versions/conversation.js",
-      "sha256": "ad2146194baec0efb6b7d70227aa40f417ce47e63115becfa5505de4ff95bf46"
+      "sha256": "3ca76874fa63827817ace3a532067f5b4be35eb86921b30f84dbf22a08710a7d"
+    },
+    {
+      "file": "versions/archive-scene.css",
+      "sha256": "9d98b5eca59370725e93dbf3b57a9af6bc34154a36f40d506ab381cc41d027fc"
+    },
+    {
+      "file": "versions/workspace-store.mjs",
+      "sha256": "8e7b277faea53b35b5383d6600b144526dd99e6923006aa25aa05431a0ef2194"
+    },
+    {
+      "file": "versions/workspace-unified.css",
+      "sha256": "0e81a0a9fd6fdaf4ee5257ba8805036b2e309d1a4626f2f28e56364175a252bd"
+    },
+    {
+      "file": "versions/workspace-unified.mjs",
+      "sha256": "75b7d7b50461da05dbe016ee1bdf8639548117a76375bcca3ba53355fdbe6460"
     }
   ],
   "scan": {
@@ -225,5 +241,21 @@
     "endpoint": null,
     "localLiveAcceptance": "REAL_BAILIAN_BROWSER_HTTP_200",
     "execution_allowed": false
+  },
+  "unifiedWorkspace": {
+    "date": "2026-10-24",
+    "scope": "ISOLATED_CANDIDATE",
+    "views": [
+      "workspace",
+      "banking",
+      "life",
+      "tasks",
+      "safety",
+      "analysis"
+    ],
+    "formalRisk": "OWNER_NOT_CONNECTED",
+    "execution_allowed": false,
+    "publicBackend": "NOT_DEPLOYED",
+    "teamCoreSnapshot": "46041e5526f97c0956798315d5caceb653615208"
   }
 }

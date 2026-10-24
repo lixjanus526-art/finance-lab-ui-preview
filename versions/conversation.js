@@ -1,4 +1,15 @@
 const $ = id => document.getElementById(id);
+const embedded = new URLSearchParams(location.search).get('embed') === '1';
+if (!embedded && !new URLSearchParams(location.search).has('standalone')) {
+  location.replace(new URL('../workspace.html#life', import.meta.url));
+  await new Promise(() => {});
+}
+if (embedded) {
+  document.body.classList.add('conversation-embedded');
+  const picker=document.createElement('select');picker.id='thread-picker';picker.setAttribute('aria-label','选择已有对话');
+  document.querySelector('.topbar').append(picker,$('new-chat'));
+  picker.addEventListener('change',()=>chooseThread(picker.value));
+}
 const labels = {income:'收入',expense:'生活',subscription:'订阅',investment:'投资',coupon:'优惠'};
 const statuses = {recorded:'已记录 · 自述',plan:'计划 · 未执行',review:'待核对',request:'待查优惠'};
 const titles = {overview:'我的概览',ledger:'生活账本',investment:'投资计划',memory:'记住的事'};
@@ -64,6 +75,10 @@ function render(){
   $('chat-title').textContent=thread?.title || '新对话';
   $('ledger-count').textContent=state.records.length || '';
   $('history').innerHTML=state.threads.length?state.threads.map(t=>`<button data-thread="${esc(t.id)}" aria-current="${t.id===threadId}">${esc(t.title)}</button>`).join(''):'<p class="empty-history">从今天的一件小事开始。</p>';
+  if(embedded){
+    $('thread-picker').innerHTML='<option value="'+esc(threadId)+'">'+esc(thread?.title||'新对话')+'</option>'+state.threads.filter(t=>t.id!==threadId).map(t=>`<option value="${esc(t.id)}">${esc(t.title)}</option>`).join('');
+    parent.postMessage({type:'finance:life-updated'},location.origin);
+  }
   $('messages').innerHTML=messages.map(m=>{
     if(m.role==='user')return `<article class="message user" aria-label="你">${esc(m.text)}</article>`;
     const rows=(m.record_ids || []).map(id=>state.records.find(r=>r.id===id)).filter(Boolean);

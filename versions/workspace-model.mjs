@@ -18,6 +18,16 @@ export function responseError(data, ok = true) {
   }
   return null;
 }
+// The read-only task query returns stored artifacts, not the original run envelope.
+export function assertRestoredHealth(data) {
+  const task=data?.task_state, artifacts=data?.artifacts;
+  if(task?.contract_version!=='investment-agent.v1'||!task.task_id||task.status!=='HANDOFF_REQUIRED'||
+    !artifacts?.portfolio_snapshot||!artifacts?.health_report?.concentration||
+    !Array.isArray(artifacts?.simulation?.comparisons)||!Array.isArray(artifacts?.simulation?.scenarios)||
+    !Number.isFinite(artifacts.health_report.metrics?.max_drawdown))throw new Error('历史任务资料不完整，未恢复分析展示。');
+  auditEvents(data.audit_evidence,task.task_id);
+  return data;
+}
 export function assertHealthResponse(data) {
   const t = data?.task_state;
   if (data?.contract_version !== "investment-agent.v1" || data.operation !== "PORTFOLIO_HEALTH_CHECK" ||
