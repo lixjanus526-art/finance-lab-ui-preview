@@ -7,7 +7,7 @@ const esc = value => String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'
 const formatTime = value => { const date=new Date(value); return Number.isNaN(date.valueOf())?String(value||'未提供'):new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',dateStyle:'short',timeStyle:'medium'}).format(date); };
 const money = cents => cents==null?'未提供':new Intl.NumberFormat('zh-CN',{style:'currency',currency:'CNY'}).format(cents/100);
 const link = (view,id,label) => `<a href="#${view}" data-trace="${esc(id)}">${esc(label)}</a>`;
-let frameReady=false,busy=false;
+let frameReady=false,busy=false,lastScope='';
 const labels={UNKNOWN:'尚未验证',CONNECTED:'已连接本机服务',READY:'服务端模型已配置 · 本轮连接以实际调用结果为准',UNAVAILABLE:'当前不可用',NOT_DEPLOYED:'尚未部署',NOT_CONNECTED:'未连接',CONNECTED_FIXTURE:'已连接固定演示数据'};
 function contextSnapshot() {
   const portfolio=$('use-portfolio').checked&&sourceState.portfolio?structuredClone(sourceState.portfolio):null;
@@ -17,7 +17,9 @@ function contextSnapshot() {
 }
 function preview() {
   const context=contextSnapshot();
-  $('context-preview').textContent=JSON.stringify(context,null,2);
+  const serialized=JSON.stringify(context,null,2);
+  if(lastScope&&lastScope!==serialized)$('context-consent').checked=false;
+  lastScope=serialized;$('context-preview').textContent=serialized;
   return context;
 }
 function render() {
@@ -69,7 +71,7 @@ $('demo-closed-loop').addEventListener('click',createDemo);
 for(const id of ['use-portfolio','use-budget','use-goal'])$(id).addEventListener('change',preview);
 $('task-intent').value=getState().drafts.question;
 $('analysis-question').value=getState().drafts.analysisQuestion||'';
-$('analysis-question').addEventListener('input',()=>updateState(s=>{s.drafts.analysisQuestion=$('analysis-question').value;}));
+$('analysis-question').addEventListener('input',()=>{$('context-consent').checked=false;updateState(s=>{s.drafts.analysisQuestion=$('analysis-question').value;});});
 $('task-intent').addEventListener('input',()=>updateState(s=>{s.drafts.question=$('task-intent').value;}));
 for(const [id,key] of [['horizon','horizon'],['drawdown','drawdown'],['liquidity','liquidity']]){
   $(id).value=getState().drafts[key]||'';
@@ -120,6 +122,7 @@ $('unified-analysis-form').addEventListener('submit',async event=>{
   const question=$('analysis-question').value.trim();
   if(!question||!$('context-consent').checked){$('analysis-status').textContent='请填写问题，并确认本次发送范围。';return;}
   const snapshot=preview(),refs={};
+  if(!$('context-consent').checked){$('analysis-status').textContent='来源范围已变化，请重新核对并确认。';return;}
   for(const key of ['portfolio','budget'])if(snapshot[key])refs[key]={id:snapshot[key].id,revision:snapshot[key].revision};
   const input={question,consent:true,sources:refs,goal:snapshot.goals};
   const fingerprint=JSON.stringify(input),pending=getState().drafts.pendingAnalysis;

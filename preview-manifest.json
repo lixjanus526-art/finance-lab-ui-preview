@@ -128,7 +128,7 @@
     },
     {
       "file": "workspace.html",
-      "sha256": "8a6dedf11ef2b134665f8fc80b9236ef5a225cda999b8239065be897cd516da8"
+      "sha256": "feafb5807a3de24be47861b71fb02c6508dce82bfa04e60e5c01da9f28d5dadb"
     },
     {
       "file": ".gitignore",
@@ -192,7 +192,7 @@
     },
     {
       "file": "versions/workspace-unified.mjs",
-      "sha256": "75b7d7b50461da05dbe016ee1bdf8639548117a76375bcca3ba53355fdbe6460"
+      "sha256": "00f60610a35f3c5cfa3592553ea6a6c4f20a187b62441dcc492198f05ba18311"
     }
   ],
   "scan": {
