@@ -1,4 +1,4 @@
-import { assertHealthResponse, assertRestoredHealth } from "./workspace-model.mjs";
+import { assertHealthResponse, assertRestoredHealth } from "./workspace-model.mjs?v=20261024-shell";
 import { inputChanged, requestStarted, requestFailed, showHealth } from "./workspace.js?v=20261024-shell";
 import { $, esc, money, pct, api, toast, downloadLink, chart, today, tip, healthCheckRequest } from "./common.js";
 import { dateStatus, planComparison } from "./presentation.mjs";

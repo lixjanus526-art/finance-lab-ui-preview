@@ -112,7 +112,7 @@
     },
     {
       "file": "versions/workspace-investment.js",
-      "sha256": "2d2449cac914d25c3a926c885637fdfcfc694ea32aba6db233baa0a976427411"
+      "sha256": "3096cb64d1fb342c086ae42d66cdacc20312760905edb5a6161ffba8d0a6f99b"
     },
     {
       "file": "versions/workspace-model.mjs",
@@ -160,7 +160,7 @@
     },
     {
       "file": "conversation.html",
-      "sha256": "422561e83eaad4343bac02962b1196de037d2702cdf156a1f12c3795ccd9e69f"
+      "sha256": "205a4befd4541b6a146877ec10a50ec15a5a7424b08be2e8eaaac6b4e240c8c4"
     },
     {
       "file": "versions/conversation-brand.css",
