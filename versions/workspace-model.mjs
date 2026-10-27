@@ -59,8 +59,9 @@ export function executionView(execution, taskId) {
   if (["SUCCEEDED", "SIMULATED"].includes(execution.status)) {
     if (!r || r.task_id !== taskId || !r.execution_id)
       return { state: "UNKNOWN", text: "完成状态缺少可关联回执。请核查，不能据此更新账本。" };
-    if (r.side_effects === false) return { state: "SUCCEEDED", text: "后端已生成无副作用模拟回执；未发生交易，未改变 PAPER 账本。" };
-    return { state: "SUCCEEDED", text: "后端已返回本任务完成回执。账本仍以服务端账本查询为准。" };
+    if (execution.status === 'SIMULATED' && r.mode === 'SIMULATED' && r.side_effects === false)
+      return { state: "SUCCEEDED", text: "后端已返回无真实交易副作用的 PAPER 模拟回执；演示账本以服务端查询为准。" };
+    return { state: "UNKNOWN", text: "回执不符合 PAPER 模拟边界，已停止采用；真实资金执行关闭。" };
   }
   if (execution.status === 'WAITING_APPROVAL') return { state:'WAITING_APPROVAL', text:'等待本人确认或审批；未执行。' };
   if (['READY', 'NOT_STARTED', 'PENDING'].includes(execution.status)) return { state:'NOT_EXECUTED', text:'审批与执行分开记录；当前没有成交回执。' };

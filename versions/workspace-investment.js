@@ -1,8 +1,11 @@
 import { assertHealthResponse, assertRestoredHealth } from "./workspace-model.mjs?v=20261024-shell";
-import { inputChanged, requestStarted, requestFailed, showHealth } from "./workspace.js?v=20261024-shell";
-import { $, esc, money, pct, api, toast, downloadLink, chart, today, tip, healthCheckRequest } from "./common.js";
+import { inputChanged, requestStarted, requestFailed, showHealth } from "./workspace.js?v=20261027-safety";
+import { $, esc, money, pct, toast, downloadLink, chart, today, tip, healthCheckRequest } from "./common.js";
+import { request } from './workspace-api.mjs';
+import { getState, updateState, rememberServiceRecord, invalidateContext } from './workspace-store.mjs';
+const api=(path,body)=>request(path,body===undefined?{}:{body});
 import { dateStatus, planComparison } from "./presentation.mjs";
-let result, inputVersion = 0;
+let result, inputVersion = 0, healthBusy = false, portfolioReady = false;
 const names = { CURRENT:"当前组合", A:"A 保持或最小动作", B:"B 温和调整", C:"C 风险优先" };
 const planCopy = { A:"保留当前配置", B:"适度降低集中度", C:"降低高波动资产权重" };
 function invalidate() {
@@ -13,7 +16,7 @@ async function init() {
   const data=await api("/api/demo/portfolio"), p=data.output.snapshot;
   const raw={portfolio_id:p.portfolio_id,as_of:p.as_of,cash:p.cash,positions:p.positions.map(({instrument_id,type,quantity,price,name,sector})=>({instrument_id,type,quantity,price,name,sector}))};
   $("#portfolio-json").value=JSON.stringify(raw,null,2);
-  renderHoldings(p); $("#run").disabled=false; $("#load-error").hidden=true; $("#retry-load").hidden=true; $("#service-state").textContent="DEMO / FIXTURE · 本地 Core 已响应";
+  portfolioReady=true;renderHoldings(p); $("#run").disabled=Boolean(getState().drafts.pendingHealth); $("#load-error").hidden=true; $("#retry-load").hidden=true; $("#service-state").textContent="DEMO / FIXTURE · Core 已响应";
 }
 function renderHoldings(p) {
   dispatchEvent(new CustomEvent('workspace:portfolio',{detail:{snapshot:p}}));
@@ -55,36 +58,47 @@ $("#check-form").addEventListener("input",invalidate);
 $("#demo-profile").onclick=()=>{ invalidate(); $("#horizon").value=365;$("#drawdown").value=10;$("#liquidity").value="medium";toast("已填入虚构偏好，可修改。"); };
 $("#check-form").onsubmit=async event=>{
   event.preventDefault();
+  if(getState().drafts.pendingHealth){requestFailed(new Error('原检查结果待核查，禁止重复提交；请查询原任务或联系 Core Owner。'));return;}
   const invalid=[...document.querySelectorAll('#check-form input, #check-form select')].filter(el=>!el.checkValidity());
   if(invalid.length){ $('#input-feedback').hidden=false; $('#input-feedback').textContent='WAITING_INPUT · 请补充或修正投资期限、回撤上限和流动性需求。'; invalid[0].focus(); return; }
   $('#input-feedback').hidden=true; requestStarted();
-  const version=inputVersion;$("#run").disabled=true;$("#results").hidden=true;$("#input-changed").hidden=true;$("#run").textContent="正在诊断…";
+  const version=inputVersion;healthBusy=true;$("#run").disabled=true;$("#results").hidden=true;$("#input-changed").hidden=true;$("#run").textContent="正在诊断…";
   try {
     const outgoing=healthCheckRequest({
       riskProfile:{investment_horizon_days:Number($("#horizon").value),max_drawdown:Number($("#drawdown").value)/100,liquidity_need:$("#liquidity").value},
       portfolio:JSON.parse($("#portfolio-json").value)
     });
+    updateState(s=>{s.drafts.pendingHealth=outgoing;});
     const next=await api("/api/health-check/run",outgoing);
-    if(version!==inputVersion) { $("#input-changed").hidden=false; return toast("输入已改变，请重新检查。"); }
     assertHealthResponse(next);
     if(next.request_id!==outgoing.request_id)throw new Error("响应不属于本次请求，结果未采用。");
+    rememberServiceRecord(next);updateState(s=>{delete s.drafts.pendingHealth;});
+    if(version!==inputVersion) { invalidateContext();$("#input-changed").hidden=false;return toast("输入已改变，旧任务仅供历史核对。"); }
     if(next.task_state.status!=="HANDOFF_REQUIRED") {
       if (!['WAITING_INPUT','BLOCKED','ERROR','FAILED'].includes(next.task_state.status)) throw new Error('服务返回未知阶段，尚未展示完成。');
       showHealth(next); $('#input-feedback').hidden=false;
       $('#input-feedback').textContent=next.task_state.missing_fields?.length ? 'WAITING_INPUT · 缺少：'+next.task_state.missing_fields.join('、') : next.task_state.error_state?.message || '请查看我的任务中的服务端状态。'; return;
     }
     displayHealth(next);
-  }catch(error){ if(version!==inputVersion)return; result=null; requestFailed(new Error('本次检查暂时未完成，请稍后重试。')); toast('本次检查暂时未完成，请稍后重试。'); }
-  finally{$("#run").disabled=false;$("#run").textContent="开始健康检查"; $("#run").removeAttribute("aria-busy");}
+  }catch(error){
+    if([401,403,422,423,429].includes(error.status))updateState(s=>{delete s.drafts.pendingHealth;});
+    if(error.trace?.task_id){$('#restore-id').value=error.trace.task_id;$('#restore-kind').value='health';}
+    if(version!==inputVersion)return;result=null;
+    const pending=getState().drafts.pendingHealth;
+    requestFailed(new Error(error.message+(pending?' 原请求关联号：'+pending.request_id+'；只读查询原任务，不自动重发。':'')));
+  }
+  finally{healthBusy=false;$("#run").disabled=!portfolioReady||Boolean(getState().drafts.pendingHealth);$("#run").textContent="开始健康检查"; $("#run").removeAttribute("aria-busy");}
 };
 $("#export").onclick=()=>{if(result)downloadLink("/api/task/"+encodeURIComponent(result.task_state.task_id)+"/export");};
 async function loadPortfolio(){
   $('#retry-load').disabled=true;
-  try{await init();}catch(error){$('#run').disabled=true;$('#load-error').hidden=false;$('#load-error').textContent='组合资料暂时无法读取，请稍后重试。';$('#retry-load').hidden=false;$('#service-state').textContent='组合服务未连接';}
+  try{await init();}catch(error){portfolioReady=false;$('#run').disabled=true;$('#load-error').hidden=false;$('#load-error').textContent='组合资料暂时无法读取，请稍后重试。';$('#retry-load').hidden=false;$('#service-state').textContent='组合服务未连接';}
   finally{$('#retry-load').disabled=false;}
 }
 $('#retry-load').onclick=loadPortfolio;
 loadPortfolio();
+if(getState().drafts.pendingHealth)requestFailed(new Error('原检查结果待核查，请保留请求关联号 '+getState().drafts.pendingHealth.request_id+' 并查询原任务。'));
+addEventListener('workspace:state',()=>{$('#run').disabled=healthBusy||!portfolioReady||Boolean(getState().drafts.pendingHealth);});
 
 function displayHealth(next, restored=false) {
   const version=inputVersion;

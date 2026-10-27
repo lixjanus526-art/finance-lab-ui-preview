@@ -3,7 +3,7 @@
   "sourceBranch": "codex/ui-site-integration-v1",
   "sourceCommit": "a007143ae5fd22750442e3ce79880aceec3baf56",
   "reviewedMain": "e51ce9bb4e30cd409414ef55f8f9a5eddd065dda",
-  "mode": "PREVIEW_STATIC_UI_ONLY",
+  "mode": "ISOLATED_UI_CANDIDATE_NOT_DEPLOYED",
   "backend": "NOT_CONNECTED",
   "files": [
     {
@@ -112,11 +112,11 @@
     },
     {
       "file": "versions/workspace-investment.js",
-      "sha256": "3096cb64d1fb342c086ae42d66cdacc20312760905edb5a6161ffba8d0a6f99b"
+      "sha256": "35c4c74b2e50a4461d0759bd093659d60bf3115259e892e1d8a151fc1c3b2aa0"
     },
     {
       "file": "versions/workspace-model.mjs",
-      "sha256": "5bb1b4e656351fb32420500ab78b342e7ed23cbdd2278d8af22e20c83b38f637"
+      "sha256": "bd3f7eda79f8aba0bc669834e9ce7c24cb74099fc41c695b48dab7895da21574"
     },
     {
       "file": "versions/workspace.css",
@@ -124,11 +124,11 @@
     },
     {
       "file": "versions/workspace.js",
-      "sha256": "6e02fad356a28ca46e009e5ef76b668372e1091a080583eb6bb8f172da573e4f"
+      "sha256": "7ed837fbd0bd3f640f19ecfd9410193e30ff069cfb0589a22f199cfbfb5d8c2a"
     },
     {
       "file": "workspace.html",
-      "sha256": "feafb5807a3de24be47861b71fb02c6508dce82bfa04e60e5c01da9f28d5dadb"
+      "sha256": "6c31f35b6388ed965cde69285de2f4bc5435e726e6867b6755a690b05f1393fb"
     },
     {
       "file": ".gitignore",
@@ -144,7 +144,7 @@
     },
     {
       "file": ".gitattributes",
-      "sha256": "f6c7b5f0019a4f3f1dea12a0806eb279149d9d4a95fb56c6bdfe49d19244f548"
+      "sha256": "847fe1be1d3b358149805d43b3d22252fa681a4c18c5e3c115d235c9d756b030"
     },
     {
       "file": "versions/workspace-refinement.css",
@@ -184,15 +184,23 @@
     },
     {
       "file": "versions/workspace-store.mjs",
-      "sha256": "8e7b277faea53b35b5383d6600b144526dd99e6923006aa25aa05431a0ef2194"
+      "sha256": "c869f67d8bd1e39fe00dca388e62e04bf01e648d4de5c8c3a6d6b43db9efe190"
     },
     {
       "file": "versions/workspace-unified.css",
-      "sha256": "0e81a0a9fd6fdaf4ee5257ba8805036b2e309d1a4626f2f28e56364175a252bd"
+      "sha256": "0e1ce1dab25d0c4f75ef41e1a8e21d28258efedc451afcb56b305da037753c1c"
     },
     {
       "file": "versions/workspace-unified.mjs",
-      "sha256": "00f60610a35f3c5cfa3592553ea6a6c4f20a187b62441dcc492198f05ba18311"
+      "sha256": "2bb53faadbfa4952e374078d778a333635e069ed843187bbb2c8c5293fd13957"
+    },
+    {
+      "file": "versions/workspace-adapter.mjs",
+      "sha256": "2e9ceabd9bfc5589fb4392050a186bb0d56bf582f4a6cf5d57ed6b92eb7dc0f4"
+    },
+    {
+      "file": "versions/workspace-api.mjs",
+      "sha256": "09a8a5887ddb57bd331bd699998d5affa32db752c607c562bf6a9dcdc028bca4"
     }
   ],
   "scan": {
@@ -257,5 +265,16 @@
     "execution_allowed": false,
     "publicBackend": "NOT_DEPLOYED",
     "teamCoreSnapshot": "46041e5526f97c0956798315d5caceb653615208"
+  },
+  "candidate": {
+    "date": "2026-10-27",
+    "uiBaseRepository": "lixjanus526-art/finance-lab-ui-preview",
+    "uiBaseBranch": "preview",
+    "uiBaseCommit": "ebd3a190f727d8060f12a9224b3e157084f7b43e",
+    "workBranch": "codex/p0p1-task-safety-20261027",
+    "teamBaseCommit": "fa53166cec9e3fb1ee4d720a31e3066bcc3f3c66",
+    "modelCalls": 0,
+    "execution_allowed": false,
+    "publicPreviewUpdated": false
   }
 }

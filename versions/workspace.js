@@ -1,5 +1,7 @@
 import { rememberTask, savedTask } from "./site-context.mjs";
-import { $, api } from "./common.js";
+import { $ } from "./common.js";
+import { request as api } from './workspace-api.mjs';
+import { rememberServiceRecord, queryServiceTask, invalidateContext, updateState } from './workspace-store.mjs';
 import { healthTask, labels, auditEvents, riskLabel } from "./workspace-model.mjs";
 
 let current = null, auditRevision = 0, restoreRevision = 0;
@@ -13,6 +15,7 @@ function text(id, value) { $(id).textContent = value; }
 const panels = [...document.querySelectorAll("[data-panel]")];
 // Each navigation item opens one workspace; browser history preserves the selection.
 export function navigate(view, focus = false, updateHistory = true) {
+  if($('#status'))$('#status').textContent='';
   if (!panels.some(panel => panel.dataset.panel === view)) view = 'workspace';
   panels.forEach(panel => { panel.hidden = panel.dataset.panel !== view; panel.classList.remove('is-active'); });
   document.querySelectorAll('[data-view]').forEach(link => {
@@ -57,6 +60,7 @@ export function progress(state) {
   });
 }
 export function inputChanged() {
+  invalidateContext();
   restoreRevision++; auditRevision++;
   if (current) { $("#task-stale").hidden = false; text("#task-stale", "输入或检查已更新。旧任务仅供回看，不代表当前输入。"); }
   progress("WAITING_INPUT");
@@ -111,6 +115,7 @@ export function renderTaskStates(view) {
   text("#execution-copy", view.execution.text);
 }
 export function showHealth(data, { restored = false } = {}) {
+  rememberServiceRecord(data, 'health');
   current = data;
   rememberTask(data.task_state.task_id);
   const view = healthTask(data);
@@ -139,19 +144,32 @@ $("#restore-form").onsubmit = async event => {
   if (!id) { text("#restore-message", "WAITING_INPUT · 请填写原任务编号。"); return; }
   text("#restore-message", "正在只读查询原任务，不重新执行。");
   try {
-    const task = await api("/api/task/" + encodeURIComponent(id));
+    const kind=$('#restore-kind').value;
+    const task = await queryServiceTask(id,kind);
     if (revision !== restoreRevision) return;
+    if(kind==='review'){
+      $('#task-detail').hidden=true;$('#task-empty').hidden=true;
+      text('#restore-message','已读取 Core 计划状态、风险、审批和审计。所有执行保持关闭。');return;
+    }
     if (task.task_state?.task_id !== id || task.task_state?.contract_version !== "investment-agent.v1")
       throw new Error("任务响应不匹配，未采用。");
     auditEvents(task.audit_evidence, id);
     showHealth(task, { restored: true });
     dispatchEvent(new CustomEvent("workspace:health-restored",{detail:task}));
+    updateState(s=>{if(s.drafts.pendingHealth?.request_id===task.task_state.request_id)delete s.drafts.pendingHealth;});
     text("#restore-message", "已读取服务端原任务；仅供回看，不与当前表单绑定。");
   } catch (error) {
+    $('#task-detail').hidden=true;$('#audit-timeline').replaceChildren();
     if (revision === restoreRevision) text("#restore-message", "ERROR · " + error.message + "。服务重启可能导致进程内记录丢失。");
   }
 };
 progress("WAITING_INPUT");
 
+addEventListener('workspace:sources',event=>{
+  if(current&&event.detail.coreErrors?.some(e=>e.id===current.task_state.task_id)){
+    $('#task-detail').hidden=true;$('#results').hidden=true;$('#audit-timeline').replaceChildren();
+    text('#restore-message','原任务暂时不可查询，已隐藏旧结果；请核对身份、权限或服务状态。');
+  }
+});
 const saved = savedTask();
 if (saved) { $("#restore-id").value = saved; $("#restore-form").requestSubmit(); }
